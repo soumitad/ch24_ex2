@@ -3,10 +3,10 @@ function get_categories() {
     global $db;
     $query = 'SELECT *,
                 (SELECT COUNT(*)
-                 FROM products
+                 FROM products_guitar_shop1
                  WHERE Products.categoryID = Categories.categoryID)
                  AS productCount
-              FROM categories
+              FROM categories_product_shop1
               ORDER BY categoryID';
     try {
         $statement = $db->prepare($query);
@@ -24,7 +24,7 @@ function get_category($category_id) {
     global $db;
     $query = '
         SELECT *
-        FROM categories
+        FROM categories_guitar_shop1
         WHERE categoryID = :category_id';
     try {
         $statement = $db->prepare($query);
@@ -41,7 +41,7 @@ function get_category($category_id) {
 
 function add_category($name) {
     global $db;
-    $query = 'INSERT INTO categories
+    $query = 'INSERT INTO categories_guitar_shop1
                  (categoryName)
               VALUES
                  (:name)';
@@ -63,7 +63,7 @@ function add_category($name) {
 function update_category($category_id, $name) {
     global $db;
     $query = '
-        UPDATE categories
+        UPDATE categories_guitar_shop1
         SET categoryName = :name
         WHERE categoryID = :category_id';
     try {
@@ -80,7 +80,7 @@ function update_category($category_id, $name) {
 
 function delete_category($category_id) {
     global $db;
-    $query = 'DELETE FROM categories WHERE categoryID = :category_id';
+    $query = 'DELETE FROM categories_guitar_shop1 WHERE categoryID = :category_id';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':category_id', $category_id);
