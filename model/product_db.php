@@ -24,7 +24,7 @@ function get_product($product_id) {
     global $db;
     $query = '
         SELECT *
-        FROM products_guitar_shop_1 p
+        FROM products_guitar_shop1 p
            INNER JOIN categories_guitar_shop1 c
            ON p.categoryID = c.categoryID
        WHERE productID = :product_id';
