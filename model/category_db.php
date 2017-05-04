@@ -6,7 +6,7 @@ function get_categories() {
                  FROM products_guitar_shop1
                  WHERE Products.categoryID = Categories.categoryID)
                  AS productCount
-              FROM categories_product_shop1
+              FROM categories_guitar_shop1
               ORDER BY categoryID';
     try {
         $statement = $db->prepare($query);
