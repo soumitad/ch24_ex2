@@ -3,8 +3,8 @@ function get_products_by_category($category_id) {
     global $db;
     $query = '
         SELECT *
-        FROM products p
-           INNER JOIN categories c
+        FROM products_guitar_shop1 p
+           INNER JOIN categories_guitar_shop1 c
            ON p.categoryID = c.categoryID
         WHERE p.categoryID = :category_id';
     try {
@@ -24,8 +24,8 @@ function get_product($product_id) {
     global $db;
     $query = '
         SELECT *
-        FROM products p
-           INNER JOIN categories c
+        FROM products_guitar_shop_1 p
+           INNER JOIN categories_guitar_shop1 c
            ON p.categoryID = c.categoryID
        WHERE productID = :product_id';
     try {
@@ -45,7 +45,7 @@ function get_product_order_count($product_id) {
     global $db;
     $query = '
         SELECT COUNT(*) AS orderCount
-        FROM orderitems
+        FROM orderitems_guitar_shop2
         WHERE productID = :product_id';
     try {
         $statement = $db->prepare($query);
@@ -64,7 +64,7 @@ function get_product_order_count($product_id) {
 function add_product($category_id, $code, $name, $description,
         $price, $discount_percent) {
     global $db;
-    $query = 'INSERT INTO products
+    $query = 'INSERT INTO products_guitar_shop2
                  (categoryID, productCode, productName, description, listPrice,
                   discountPercent, dateAdded)
               VALUES
@@ -94,7 +94,7 @@ function update_product($product_id, $code, $name, $desc,
                         $price, $discount, $category_id) {
     global $db;
     $query = '
-        UPDATE Products
+        UPDATE products_guitar_shop2
         SET productName = :name,
             productCode = :code,
             description = :desc,
@@ -121,7 +121,7 @@ function update_product($product_id, $code, $name, $desc,
 
 function delete_product($product_id) {
     global $db;
-    $query = 'DELETE FROM products WHERE productID = :product_id';
+    $query = 'DELETE FROM products_guitar_shop2 WHERE productID = :product_id';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':product_id', $product_id);
